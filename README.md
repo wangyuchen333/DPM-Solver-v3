@@ -255,7 +255,12 @@ x_sample = dpm_solver_v3.sample(
 
 ## EMS Computing by Yourself
 
-TODO
+We provide the code example `compute_EMS_scoresde.py` for EMS computing in the `score_sde` codebase. It distributes the computation on multiple GPUs using `torch.multiprocessing`, and leverage `torch.autograd.forward_ad` for fast calculation of Jacobian-vector products (JVPs) with forward-mode automatic differentiation. The procedure is detailed in *Appendix C.1.1* in the paper. The arguments correspond to the paper in the following way:
+
+- $K$ in the paper equals `n_batch` x `batch_size` x `N_GPUs`
+- $N$ in the paper equals `n_timesteps`
+
+To compute the EMS for your own model, please change the model loading and dataset in the code.
 
 ## Acknowledgement
 
